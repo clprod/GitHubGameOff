@@ -20,7 +20,7 @@ script/script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-max_speed = 120
+max_speed = 200
 acceleration = 400
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

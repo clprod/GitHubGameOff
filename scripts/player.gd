@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export(float) var max_speed = 120
+export(float) var max_speed = 200
 export(float) var acceleration = 400
 
 var current_speed = 0
@@ -23,8 +23,9 @@ func _fixed_process(delta):
 		current_speed += acceleration * delta
 		if current_speed > max_speed:
 			current_speed = max_speed
-
-	move(velocity * current_speed * delta)
+		move(velocity.normalized() * current_speed * delta)
+	else:
+		current_speed = 0
 
 func _draw():
 	draw_rect(Rect2(-32, -32, 64, 64), Color(1, 1, 1))
