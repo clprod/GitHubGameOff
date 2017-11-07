@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
 export(NodePath) var player 
-export(float) var max_speed = 200
+export(float) var max_speed = 100
 export(float) var acceleration = 400
+export(float) var aggro_threshold = 100
 
 var current_speed = 0
 
@@ -12,21 +13,19 @@ func _ready():
 func _fixed_process(delta):
 	var velocity = Vector2()
 	var target_pos = get_node(player).get_pos()
-	var direction = (target_pos - get_pos())
-	print(direction.normalized())
-	velocity += direction.normalized()
-		
+
+	if target_pos.distance_to(get_pos()) > aggro_threshold:
+		current_speed = 0
+		return
+
+	velocity = (target_pos - get_pos()).normalized()
+
 	if velocity.x != 0 || velocity.y != 0:
 		current_speed += acceleration * delta
 		if current_speed > max_speed:
 			current_speed = max_speed
-			
-	# If player get too close...
-	if target_pos.distance_to(get_pos()) < 100:
-		# Player is chased!
-		move(direction.normalized() * velocity.normalized() * current_speed * delta)
-	else:
-		current_speed = 0
+
+	move(velocity * current_speed * delta)
 
 func _draw():
-	draw_rect(Rect2(-32, -32, 64, 64), Color(100, 0, 0))
+	draw_rect(Rect2(-32, -32, 64, 64), Color(1, 0, 0))

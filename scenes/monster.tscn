@@ -21,8 +21,9 @@ __meta__ = {
 "_edit_group_": true
 }
 player = NodePath("\"null\"")
-max_speed = 200
+max_speed = 100
 acceleration = 400
+aggro_threshold = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
