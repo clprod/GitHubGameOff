@@ -27,7 +27,6 @@ attack_time = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-visibility/visible = false
 transform/pos = Vector2( 0, 16 )
 shape = SubResource( 1 )
 trigger = false
