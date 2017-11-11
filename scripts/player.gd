@@ -47,4 +47,4 @@ func _fixed_process(delta):
 		current_speed = 0
 
 func _draw():
-	draw_rect(Rect2(-32, -32, 64, 64), Color(1, 1, 1))
+	#draw_rect(Rect2(-32, -32, 64, 64), Color(1, 1, 1))
