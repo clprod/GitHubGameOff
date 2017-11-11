@@ -38,6 +38,19 @@ func _fixed_process(delta):
 	if Input.is_action_pressed("right"):
 		velocity.x += 1
 
+	if current_speed == 0 or velocity.x == 0:
+		if velocity.y > 0:
+			set_frame(0)
+		elif velocity.y < 0:
+			pass
+	if current_speed == 0 or velocity.y == 0:
+		if velocity.x > 0:
+			set_frame(2)
+			get_node("Sprite").set_flip_h(false)
+		elif velocity.x < 0:
+			set_frame(2)
+			get_node("Sprite").set_flip_h(true)
+
 	if velocity.x != 0 || velocity.y != 0:
 		current_speed += acceleration * delta
 		if current_speed > max_speed:
@@ -46,5 +59,5 @@ func _fixed_process(delta):
 	else:
 		current_speed = 0
 
-func _draw():
-	#draw_rect(Rect2(-32, -32, 64, 64), Color(1, 1, 1))
+func set_frame(frame):
+	get_node("Sprite").set_frame(frame)
