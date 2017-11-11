@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 32, 32 )
 
 [node name="player" type="KinematicBody2D"]
 
@@ -22,6 +22,7 @@ __meta__ = {
 }
 max_speed = 200
 acceleration = 400
+attack_time = 0.2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

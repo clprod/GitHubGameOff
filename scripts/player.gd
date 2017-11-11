@@ -2,13 +2,32 @@ extends KinematicBody2D
 
 export(float) var max_speed = 200
 export(float) var acceleration = 400
+export(float) var attack_time = 0.2
 
 var current_speed = 0
 
+var attacking = false
+var last_attack_time = 0
+
 func _ready():
+	set_process_input(true)
 	set_fixed_process(true)
 
+func _input(event):
+	if event.is_action_pressed("attack"):
+		print("attack")
+		attacking = true
+		last_attack_time = attack_time
+
 func _fixed_process(delta):
+	if attacking:
+		current_speed = 0
+		last_attack_time -= delta
+		if last_attack_time <= 0:
+			attacking = false
+		else:
+			return
+
 	var velocity = Vector2()
 	if Input.is_action_pressed("down"):
 		velocity.y += 1
