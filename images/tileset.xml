@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="4" version="2.1" version_name="Godot Engine v2.1.4.stable.custom_build">
+<resource_file type="TileSet" subresource_count="3" version="2.1" version_name="Godot Engine v2.1.4.stable.custom_build">
 	<ext_resource path="res://images/map_tile_set.png" type="Texture" index="0"></ext_resource>
 	<resource type="ConvexPolygonShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2_array name="points" len="4"> 			-82.0462, 80.9151, -82.0462, -2.39944, 79.6755, -2.39944, 80.0659, 80.4038 </vector2_array>
-
-	</resource>
-	<resource type="ConvexPolygonShape2D" path="local://2">
-		<real name="custom_solver_bias"> 0 </real>
-		<vector2_array name="points" len="4"> 			10, -9.81481, 9.62617, -0.555557, -9.81308, -0.370371, -9.81308, -10 </vector2_array>
+		<vector2_array name="points" len="4"> 			-80.4283, 81.8988, -80.0366, -13.3094, 78.6713, -13.3094, 80.0659, 80.4038 </vector2_array>
 
 	</resource>
 	<main_resource>
@@ -33,8 +28,7 @@
 		<vector2 name="1/occluder_offset"> 32, 32 </vector2>
 		<resource name="1/occluder"></resource>		<vector2 name="1/navigation_offset"> 32, 32 </vector2>
 		<resource name="1/navigation"></resource>		<vector2 name="1/shape_offset"> 0, 0 </vector2>
-		<array name="1/shapes" len="1" shared="false">
-			<resource  resource_type="Shape2D" path="local://2">  </resource>
+		<array name="1/shapes" len="0" shared="false">
 		</array>
 		<vector2 name="1/one_way_collision_direction"> 0, 0 </vector2>
 		<real name="1/one_way_collision_max_depth"> 0 </real>
