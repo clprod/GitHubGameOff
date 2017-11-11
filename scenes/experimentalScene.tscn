@@ -3,13 +3,16 @@
 [ext_resource path="res://scenes/monster.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
 
-[node name="Node" type="Node"]
+[node name="Node2D" type="Node2D"]
 
 [node name="monster" parent="." instance=ExtResource( 1 )]
 
 transform/pos = Vector2( 150, 150 )
 player = NodePath("../player")
+aggro_threshold = 300.0
 
 [node name="player" parent="." instance=ExtResource( 2 )]
+
+transform/pos = Vector2( 577.884, 265.559 )
 
 
