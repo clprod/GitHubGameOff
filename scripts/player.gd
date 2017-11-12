@@ -45,10 +45,10 @@ func _fixed_process(delta):
 			pass
 	if current_speed == 0 or velocity.y == 0:
 		if velocity.x > 0:
-			set_frame(2)
+			set_frame(4)
 			get_node("Sprite").set_flip_h(false)
 		elif velocity.x < 0:
-			set_frame(2)
+			set_frame(4)
 			get_node("Sprite").set_flip_h(true)
 
 	if velocity.x != 0 || velocity.y != 0:
