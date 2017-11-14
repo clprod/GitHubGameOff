@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://images/portail.png" type="Texture" id=1]
+[ext_resource path="res://scripts/glow.gd" type="Script" id=2]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+shader/shading_mode = 0
+
+[node name="Portail" type="Node2D"]
+
+[node name="portail_sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+modulate = Color( 0.707031, 0.491608, 0.516853, 1 )
+
+[node name="portail_sprite1" type="Sprite" parent="portail_sprite"]
+
+visibility/behind_parent = true
+material/material = SubResource( 1 )
+transform/scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 1 )
+modulate = Color( 0, 0, 0, 1 )
+script/script = ExtResource( 2 )
+
+
