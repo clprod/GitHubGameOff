@@ -1,5 +1,12 @@
 extends KinematicBody2D
 
+enum DIRECTION {
+	LEFT,
+	RIGHT,
+	TOP,
+	BOTTOM
+}
+
 export(float) var max_speed = 200
 export(float) var acceleration = 400
 export(float) var attack_time = 0.2
@@ -8,6 +15,7 @@ var current_speed = 0
 
 var attacking = false
 var last_attack_time = 0
+var current_direction = BOTTOM
 
 var last_frame = 0
 
@@ -25,10 +33,24 @@ func _input(event):
 		last_attack_time = attack_time
 
 		var space_state = get_world_2d().get_direct_space_state()
-		var result = space_state.intersect_ray( get_global_pos(), get_global_pos() + Vector2(80, 0) )
+		var ray_direction
+		if current_direction == RIGHT:
+			ray_direction = Vector2(1, 0)
+		elif current_direction == LEFT:
+			ray_direction = Vector2(-1, 0)
+		elif current_direction == TOP:
+			ray_direction = Vector2(0, -1)
+		elif current_direction == BOTTOM:
+			ray_direction = Vector2(0, 1)
+	
+		var result = space_state.intersect_ray( get_global_pos(), get_global_pos() + ray_direction * 50, [self] )
 		if not result.empty():
 			var obj = result.collider
-			obj.set_pos(obj.get_pos() + Vector2(50, 0))
+			if not obj.is_in_group("monsters"):
+				return
+			var offset = (get_global_pos() - obj.get_pos()).normalized()
+			obj.set_pos(obj.get_pos() - offset * 50)
+			print("hit")
 
 func _fixed_process(delta):
 	if attacking:
@@ -53,15 +75,18 @@ func _fixed_process(delta):
 	if current_speed == 0 or velocity.x == 0:
 		if velocity.y > 0:
 			set_frame(0)
+			current_direction = BOTTOM
 		elif velocity.y < 0:
-			pass
+			current_direction = TOP
 	if current_speed == 0 or velocity.y == 0:
 		if velocity.x > 0:
 			set_frame(4)
 			get_node("Sprite").set_flip_h(false)
+			current_direction = RIGHT
 		elif velocity.x < 0:
 			set_frame(4)
 			get_node("Sprite").set_flip_h(true)
+			current_direction = LEFT
 
 	if velocity.x != 0 || velocity.y != 0:
 		current_speed += acceleration * delta
