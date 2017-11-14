@@ -24,6 +24,12 @@ func _input(event):
 		attacking = true
 		last_attack_time = attack_time
 
+		var space_state = get_world_2d().get_direct_space_state()
+		var result = space_state.intersect_ray( get_global_pos(), get_global_pos() + Vector2(80, 0) )
+		if not result.empty():
+			var obj = result.collider
+			obj.set_pos(obj.get_pos() + Vector2(50, 0))
+
 func _fixed_process(delta):
 	if attacking:
 		current_speed = 0
