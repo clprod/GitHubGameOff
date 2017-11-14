@@ -1,18 +1,39 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://scenes/monster.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/game.gd" type="Script" id=1]
+[ext_resource path="res://scenes/map2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://materials/material.tres" type="CanvasItemMaterial" id=3]
+[ext_resource path="res://scenes/map1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/monster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="monster" parent="." instance=ExtResource( 1 )]
+z/z = -1
+script/script = ExtResource( 1 )
+map2 = ExtResource( 2 )
+material = ExtResource( 3 )
 
-transform/pos = Vector2( 150, 150 )
+[node name="map2" parent="." instance=ExtResource( 2 )]
+
+[node name="map1" parent="." instance=ExtResource( 4 )]
+
+material/material = ExtResource( 3 )
+
+[node name="monster" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 144.989, 347.082 )
 player = NodePath("../player")
 aggro_threshold = 300.0
 
-[node name="player" parent="." instance=ExtResource( 2 )]
+[node name="monster1" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 577.884, 265.559 )
+transform/pos = Vector2( 838.074, 494.722 )
+player = NodePath("../player")
+aggro_threshold = 300.0
+
+[node name="player" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 573.362, 398.205 )
 
 
