@@ -50,7 +50,6 @@ func _input(event):
 				return
 			var offset = (get_global_pos() - obj.get_pos()).normalized()
 			obj.set_pos(obj.get_pos() - offset * 50)
-			print("hit")
 
 func _fixed_process(delta):
 	if attacking:
