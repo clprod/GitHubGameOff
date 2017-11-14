@@ -7,7 +7,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[node name="monster" type="KinematicBody2D"]
+[node name="monster" type="KinematicBody2D" groups=[
+"monsters",
+]]
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
