@@ -4,8 +4,11 @@ export(NodePath) var player
 export(float) var max_speed = 100
 export(float) var acceleration = 400
 export(float) var aggro_threshold = 100
+export(int) var max_health = 3
 
 var current_speed = 0
+
+var health = max_health
 
 func _ready():
 	set_fixed_process(true)
