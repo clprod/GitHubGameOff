@@ -9,7 +9,6 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	print(get_opacity())
 	if decrease:
 		set_opacity(get_opacity()-0.01)
 		if get_opacity() <= 0:
