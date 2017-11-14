@@ -6,7 +6,8 @@ _code = {
 "fragment": "uniform vec2 transitionPosition;
 float changeRange = 0.05;
 
-float dist = distance(transitionPosition, SCREEN_UV);
+//float dist = distance(transitionPosition, SCREEN_UV);
+float dist = sqrt(pow(transitionPosition.x - SCREEN_UV.x, 2) + pow(transitionPosition.y - SCREEN_UV.y, 3));
 if (dist * 4 >= TIME)
 {
 	// Previous map
