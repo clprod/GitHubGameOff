@@ -3,7 +3,8 @@ extends KinematicBody2D
 export(NodePath) var player 
 export(float) var max_speed = 100
 export(float) var acceleration = 400
-export(float) var aggro_threshold = 100
+export(float) var aggro_threshold = 300
+var is_agressiv = false
 export(int) var max_health = 3
 
 var current_speed = 0
@@ -17,7 +18,10 @@ func _fixed_process(delta):
 	var velocity = Vector2()
 	var target_pos = get_node(player).get_pos()
 
-	if target_pos.distance_to(get_pos()) > aggro_threshold:
+	if target_pos.distance_to(get_pos()) < aggro_threshold:
+		is_agressiv = true 
+		
+	if target_pos.distance_to(get_pos()) > aggro_threshold and not is_agressiv:
 		current_speed = 0
 		return
 
