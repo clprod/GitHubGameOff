@@ -14,7 +14,7 @@
 	</resource>
 	<resource type="RectangleShape2D" path="local://3">
 		<real name="custom_solver_bias"> 0 </real>
-		<vector2 name="extents"> 10.6241, 10.7286 </vector2>
+		<vector2 name="extents"> 32, 32 </vector2>
 
 	</resource>
 	<main_resource>
