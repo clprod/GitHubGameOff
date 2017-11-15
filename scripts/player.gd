@@ -27,7 +27,6 @@ func _input(event):
 	if event.is_action_pressed("attack"):
 		if attacking:
 			return
-		last_frame = get_node("Sprite").get_frame()
 		get_node("AnimationPlayer").play("attack")
 		attacking = true
 		last_attack_time = attack_time
@@ -60,7 +59,6 @@ func _fixed_process(delta):
 		last_attack_time -= delta
 		if last_attack_time <= 0:
 			attacking = false
-			get_node("Sprite").set_frame(last_frame)
 		else:
 			return
 
