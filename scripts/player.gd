@@ -28,7 +28,7 @@ func _input(event):
 		if attacking:
 			return
 		last_frame = get_node("Sprite").get_frame()
-		get_node("Sprite").set_frame(5)
+		get_node("AnimationPlayer").play("attack")
 		attacking = true
 		last_attack_time = attack_time
 
@@ -76,17 +76,18 @@ func _fixed_process(delta):
 
 	if current_speed == 0 or velocity.x == 0:
 		if velocity.y > 0:
-			set_frame(0)
+			get_node("AnimationPlayer").play("walk_bottom")
 			current_direction = BOTTOM
 		elif velocity.y < 0:
 			current_direction = TOP
+			get_node("AnimationPlayer").play("walk_top")
 	if current_speed == 0 or velocity.y == 0:
 		if velocity.x > 0:
-			set_frame(4)
+			get_node("AnimationPlayer").play("walk_side")
 			get_node("Sprite").set_flip_h(false)
 			current_direction = RIGHT
 		elif velocity.x < 0:
-			set_frame(4)
+			get_node("AnimationPlayer").play("walk_side")
 			get_node("Sprite").set_flip_h(true)
 			current_direction = LEFT
 
