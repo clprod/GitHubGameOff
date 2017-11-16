@@ -17,6 +17,7 @@ extents = Vector2( 32.4065, 13.4889 )
 
 [node name="wall" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 96, 32 )
 texture = ExtResource( 1 )
 region = true
@@ -46,6 +47,7 @@ _update_shape_index = 0
 
 [node name="wall_foot" type="Sprite" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 96, 96 )
 texture = ExtResource( 1 )
 region = true
