@@ -42,7 +42,7 @@ func _input(event):
 		elif current_direction == BOTTOM:
 			ray_direction = Vector2(0, 1)
 	
-		var result = space_state.intersect_ray( get_global_pos(), get_global_pos() + ray_direction * 50, [self] )
+		var result = space_state.intersect_ray( get_global_pos() - Vector2(0, 32), get_global_pos() + ray_direction * 50, [self] )
 		if not result.empty():
 			var obj = result.collider
 			if not obj.is_in_group("monsters"):

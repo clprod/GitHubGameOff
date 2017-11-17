@@ -15,12 +15,16 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
+	if player == null || get_node(player) == null:
+		return
+	
 	var velocity = Vector2()
 	var target_pos = get_node(player).get_pos()
 
-	if target_pos.distance_to(get_pos()) < aggro_threshold:
-		is_agressiv = true 
-		
+	if target_pos.distance_to(get_pos()) < aggro_threshold and not is_agressiv:
+		is_agressiv = true
+		get_node("AnimationPlayer").play("walk")
+
 	if target_pos.distance_to(get_pos()) > aggro_threshold and not is_agressiv:
 		current_speed = 0
 		return
@@ -32,7 +36,9 @@ func _fixed_process(delta):
 		if current_speed > max_speed:
 			current_speed = max_speed
 
-	move(velocity * current_speed * delta)
+	if velocity.x > 0:
+		get_node("Sprite").set_flip_h(false)
+	elif velocity.y < 0:
+		get_node("Sprite").set_flip_h(true)
 
-func _draw():
-	draw_rect(Rect2(-32, -32, 64, 64), Color(1, 0, 0))
+	move(velocity * current_speed * delta)
