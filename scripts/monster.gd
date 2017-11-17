@@ -24,6 +24,7 @@ func _fixed_process(delta):
 	if target_pos.distance_to(get_pos()) < aggro_threshold and not is_agressiv:
 		is_agressiv = true
 		get_node("AnimationPlayer").play("walk")
+		get_node("AnimationPlayer").queue("hit")
 
 	if target_pos.distance_to(get_pos()) > aggro_threshold and not is_agressiv:
 		current_speed = 0
