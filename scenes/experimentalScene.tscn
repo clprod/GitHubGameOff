@@ -37,17 +37,13 @@ material/material = ExtResource( 3 )
 
 [node name="monster" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 144.989, 347.082 )
+transform/pos = Vector2( 673.529, 282.174 )
 player = NodePath("../player")
-aggro_threshold = 300.0
-max_health = 3
 
 [node name="monster1" parent="." instance=ExtResource( 6 )]
 
-transform/pos = Vector2( 838.074, 494.722 )
+transform/pos = Vector2( 868.983, 173.271 )
 player = NodePath("../player")
-aggro_threshold = 300.0
-max_health = 3
 
 [node name="player" parent="." instance=ExtResource( 7 )]
 
