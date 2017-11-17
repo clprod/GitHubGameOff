@@ -51,6 +51,6 @@ max_health = 3
 
 [node name="player" parent="." instance=ExtResource( 7 )]
 
-transform/pos = Vector2( 573.362, 398.205 )
+transform/pos = Vector2( 272.083, 213.638 )
 
 
