@@ -39,7 +39,7 @@ func _fixed_process(delta):
 
 	if velocity.x > 0:
 		get_node("Sprite").set_flip_h(false)
-	elif velocity.y < 0:
+	elif velocity.x < 0:
 		get_node("Sprite").set_flip_h(true)
 
 	move(velocity * current_speed * delta)
