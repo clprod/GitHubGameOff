@@ -5,8 +5,6 @@
 
 [node name="level1" type="Node2D"]
 
-material/use_parent = true
-
 [node name="Calque de Tile 1" type="TileMap" parent="."]
 
 material/use_parent = true
