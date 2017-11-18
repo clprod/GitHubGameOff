@@ -36,12 +36,20 @@ material/material = ExtResource( 2 )
 
 [node name="monster" parent="." instance=ExtResource( 5 )]
 
+<<<<<<< HEAD
 transform/pos = Vector2( 771.975, 249.37 )
+=======
+transform/pos = Vector2( 673.529, 282.174 )
+>>>>>>> 2164862f18bf63b002279ce7f223d04e787c3d8e
 player = NodePath("../player")
 
 [node name="monster1" parent="." instance=ExtResource( 5 )]
 
+<<<<<<< HEAD
 transform/pos = Vector2( 772.932, 163.586 )
+=======
+transform/pos = Vector2( 868.983, 173.271 )
+>>>>>>> 2164862f18bf63b002279ce7f223d04e787c3d8e
 player = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource( 6 )]

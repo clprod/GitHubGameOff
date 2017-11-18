@@ -52,6 +52,8 @@ func _input(event):
 			obj.health -= 1
 			if obj.health == 0:
 				obj.queue_free()
+			else:
+				obj.get_node("AnimationPlayer").play("hit")
 
 func _fixed_process(delta):
 	if attacking:
