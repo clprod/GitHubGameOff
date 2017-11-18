@@ -83,11 +83,13 @@ func _fixed_process(delta):
 			get_node("AnimationPlayer").play("walk_top")
 	if current_speed == 0 or velocity.y == 0:
 		if velocity.x > 0:
-			get_node("AnimationPlayer").play("walk_side")
+			if current_direction != LEFT and current_direction != RIGHT:
+				get_node("AnimationPlayer").play("walk_side")
 			get_node("Sprite").set_flip_h(false)
 			current_direction = RIGHT
 		elif velocity.x < 0:
-			get_node("AnimationPlayer").play("walk_side")
+			if current_direction != LEFT and current_direction != RIGHT:
+				get_node("AnimationPlayer").play("walk_side")
 			get_node("Sprite").set_flip_h(true)
 			current_direction = LEFT
 
@@ -98,6 +100,7 @@ func _fixed_process(delta):
 		move(velocity.normalized() * current_speed * delta)
 	else:
 		current_speed = 0
+		get_node("AnimationPlayer").play("idle")
 
 func set_frame(frame):
 	get_node("Sprite").set_frame(frame)
