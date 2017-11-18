@@ -21,6 +21,11 @@ func start_transition(object):
 	# Instancier la nouvelle map
 	# Ajouter le material à la map précédente
 	get_node("map1").set_material(material)
+	
+	var camOffset = get_node("player").get_global_pos() - get_node("player/Camera2D").get_camera_screen_center()
+	camOffset.x = camOffset.x / Globals.get("display/width") + 0.5
+	camOffset.y = camOffset.y / -Globals.get("display/height") + 0.5
+	material.set_shader_param("transitionPosition", camOffset)
 	# Lancer la transition
 	transition_time = 0
 	set_process(true)
