@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 resource/name = "hit"
 length = 0.1
@@ -24,10 +24,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 0.40625, 0.40625, 1 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0.1 ),
+"transitions": FloatArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_hit"
+} ]
+}
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource/name = "walk"
 length = 0.5
 loop = true
 step = 0.1
@@ -82,8 +93,8 @@ frame = 3
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/hit = SubResource( 3 )
-anims/walk = SubResource( 2 )
+anims/hit = SubResource( 2 )
+anims/walk = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
