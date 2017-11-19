@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 enum DIRECTION {
+	NONE,
 	LEFT,
 	RIGHT,
 	TOP,
@@ -17,7 +18,7 @@ var attacking = false
 var last_attack_time = 0
 var current_direction = BOTTOM
 
-var last_frame = 0
+var last_animation
 
 func _ready():
 	set_process_input(true)
@@ -27,7 +28,10 @@ func _input(event):
 	if event.is_action_pressed("attack"):
 		if attacking:
 			return
+		if get_node("AnimationPlayer").get_current_animation() != "attack":
+			last_animation = get_node("AnimationPlayer").get_current_animation()
 		get_node("AnimationPlayer").play("attack")
+		get_node("AnimationPlayer").queue(last_animation)
 		attacking = true
 		last_attack_time = attack_time
 
@@ -99,6 +103,7 @@ func _fixed_process(delta):
 			current_speed = max_speed
 		move(velocity.normalized() * current_speed * delta)
 	else:
+		current_direction = NONE
 		current_speed = 0
 		get_node("AnimationPlayer").play("idle")
 
