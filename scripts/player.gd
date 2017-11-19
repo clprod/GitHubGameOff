@@ -17,6 +17,7 @@ var current_speed = 0
 var attacking = false
 var last_attack_time = 0
 var current_direction = BOTTOM
+var last_direction = BOTTOM
 
 var last_animation
 
@@ -37,13 +38,17 @@ func _input(event):
 
 		var space_state = get_world_2d().get_direct_space_state()
 		var ray_direction
-		if current_direction == RIGHT:
+		var attack_direction = current_direction
+		if attack_direction == NONE:
+			attack_direction = last_direction
+
+		if attack_direction == RIGHT:
 			ray_direction = Vector2(1, 0)
-		elif current_direction == LEFT:
+		elif attack_direction == LEFT:
 			ray_direction = Vector2(-1, 0)
-		elif current_direction == TOP:
+		elif attack_direction == TOP:
 			ray_direction = Vector2(0, -1)
-		elif current_direction == BOTTOM:
+		elif attack_direction == BOTTOM:
 			ray_direction = Vector2(0, 1)
 	
 		var result = space_state.intersect_ray( get_global_pos() - Vector2(0, 32), get_global_pos() + ray_direction * 50, [self] )
@@ -103,6 +108,8 @@ func _fixed_process(delta):
 			current_speed = max_speed
 		move(velocity.normalized() * current_speed * delta)
 	else:
+		if current_speed != 0:
+			last_direction = current_direction
 		current_direction = NONE
 		current_speed = 0
 		get_node("AnimationPlayer").play("idle")
