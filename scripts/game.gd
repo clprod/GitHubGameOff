@@ -21,7 +21,7 @@ func _process(delta):
 		set_process(false)
 
 func start_transition(object):
-	if not object.is_in_group("player") and current_level != 1:
+	if true or not object.is_in_group("player") and current_level != 1:
 		return
 
 	# Instancier la nouvelle map
