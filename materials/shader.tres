@@ -5,25 +5,26 @@
 _code = {
 "fragment": "uniform vec2 transitionPosition;
 uniform float time;
-float changeRange = 0.05;
+float changeRange = 0.8;
 
 //float dist = distance(transitionPosition, SCREEN_UV);
 float dist = sqrt(pow(transitionPosition.x - SCREEN_UV.x, 2) + pow(transitionPosition.y - SCREEN_UV.y, 2.5));
-if (dist >= time)
+
+if (dist - time >= 0)
 {
 	// Previous map
 	COLOR=tex(TEXTURE, UV);
 }
 else
 {
-	if(dist + changeRange >= time)
+	if (dist - time > -changeRange)
 	{
-		// Blend
-		COLOR=mix(vec4(texscreen(SCREEN_UV), 1.0), tex(TEXTURE, UV), 0.5);
+		// transition
+		COLOR=mix(vec4(texscreen(SCREEN_UV), 1.0), tex(TEXTURE, UV), clamp(dist-time+changeRange, 0, 1));
 	}
 	else
 	{
-		// next map
+		// Next map
 		COLOR=vec4(texscreen(SCREEN_UV), 1.0);
 	}
 }",
