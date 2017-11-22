@@ -19,12 +19,12 @@ transition_time = 1.5
 
 [node name="monster" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 771.975, 249.37 )
+transform/pos = Vector2( 559.756, 472.472 )
 player = NodePath("../player")
 
 [node name="monster1" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 868.983, 173.271 )
+transform/pos = Vector2( 818.649, 476.635 )
 player = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource( 6 )]

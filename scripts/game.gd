@@ -24,6 +24,7 @@ func start_transition(object):
 	if not object.is_in_group("player") and current_level != 1:
 		return
 
+	print("tr")
 	# Instancier la nouvelle map
 	var newMap = map2.instance()
 	add_child(newMap)
